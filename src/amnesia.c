@@ -25,7 +25,7 @@
  /**
   * -- Amnesia --
   * Amnesia is a simple tool that clear the contents of all files
-  * which is located under ROOT. In other words the computer is like
+  * which are located under ROOT. In other words the computer is like
   * getting amnesia to it's files.
   */
 #include "amnesia.h"
@@ -49,6 +49,8 @@ int main() {
 	 * they contain (preorder traversal). 
 	 * FTW_PHYS is passed as a flag. That allows us not to follow symbolic links.
 	 */
-    nftw(ROOT, nftwCallback, 20, FTW_PHYS);
+    if (nftw(ROOT, nftwCallback, 20, FTW_PHYS) == -1) {
+    	perror("nftw");
+    }
     return 0; /* We might face an error on nftw() but we don't care either.*/
 }

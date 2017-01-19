@@ -27,7 +27,7 @@
 /**
  * fopen() gives an error if there is not an lvalue
  * before it. We don't care. We just want to open
- * the file.
+ * the file. Used only in gcc compiler.
  */
 #pragma GCC diagnostic ignored "-Wunused-result"
 
