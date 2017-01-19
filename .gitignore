@@ -1,0 +1,4 @@
+# Build directory as well as amnesia
+# executable are generated using make call.
+build
+amnesia
