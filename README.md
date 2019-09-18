@@ -1,12 +1,9 @@
 ## Amnesia
----
 
-Amnesia is a simple tool that clear the contents of all files which are located under ROOT *see src/amnesia.h*. In other words the computer is like getting amnesia to it's files.
+Amnesia erase the contents of all files under ROOT, see `src/amnesia.h` for more details. In other words the computer is like getting [amnesia](https://en.wikipedia.org/wiki/Amnesia) to it's contents.
 
-## Make
-
-This program does have tested and work under Ubuntu. The `makefile` uses `gcc` compiler. Simple run `make` in your terminal to compile the program. 
+This program have been tested and works under Ubuntu flavors. Run `make` to compile the program. 
 
 ## LICENSE
 
-Copyright (c) 2017 George G. Gkasdrogkas. Licensed under the [MIT](https://github.com/GeorgeGkas/Amnesia/blob/master/LICENSE) license.
+Copyright (c) 2017 George Gkasdrogkas. Licensed under the [MIT](https://github.com/GeorgeGkas/Amnesia/blob/master/LICENSE) license.
